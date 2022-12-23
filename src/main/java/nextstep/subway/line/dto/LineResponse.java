@@ -24,6 +24,7 @@ public class LineResponse {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime modifiedDate;
 
+
     public LineResponse() {
     }
 
