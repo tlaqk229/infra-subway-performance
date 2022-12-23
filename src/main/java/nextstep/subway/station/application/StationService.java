@@ -27,6 +27,7 @@ public class StationService {
         return StationResponse.of(persistStation);
     }
 
+    @Cacheable("stations")
     public List<StationResponse> findAllStations() {
         List<Station> stations = stationRepository.findAll();
 
@@ -35,7 +36,7 @@ public class StationService {
                 .collect(Collectors.toList());
     }
 
-    @CacheEvict(value = "station", key = "#id")
+    @CacheEvict(value = "stations", allEntries = true)
     @Transactional
     public void deleteStationById(Long id) {
         stationRepository.deleteById(id);
